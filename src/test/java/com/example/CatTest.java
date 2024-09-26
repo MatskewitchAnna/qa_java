@@ -1,13 +1,13 @@
 package com.example;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
-
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
@@ -19,13 +19,17 @@ public class CatTest {
 
     @Test
     public void getSoundTest() {
-        Mockito.when(cat.getSound()).thenReturn("Мяу");
-        Assert.assertEquals("Мяу", cat.getSound());
+        assertEquals("Мяу", cat.getSound());
     }
 
     @Test
     public void getFoodTest() throws Exception {
         Mockito.when(cat.getFood()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
+        assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
     }
 }
+
+/*исправила метод getSoundTest().
+* если всё правильно понимаю, getFoodTest() править не надо,
+* ведь он зависит от predator.eatMeat()
+*/

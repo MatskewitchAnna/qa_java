@@ -7,6 +7,8 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
 
@@ -15,8 +17,7 @@ public class FelineTest {
 
     @Test
     public void getFamilyTest() {
-        Mockito.when(feline.getFamily()).thenReturn("Кошачьи");
-        Assert.assertEquals("Кошачьи", feline.getFamily());
+        assertEquals("Кошачьи", feline.getFamily());
     }
 
     @Test
@@ -27,7 +28,7 @@ public class FelineTest {
 
     @Test
     public void getKittensWithParamsInt() {
-        feline.getKittens(0);
-        Mockito.verify(feline).getKittens(Mockito.anyInt());
+        //проверяем, что при передаче заданного значения метод возвращает именно его
+        assertEquals(10, feline.getKittens(10));
     }
 }

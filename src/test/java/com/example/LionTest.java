@@ -28,18 +28,13 @@ public class LionTest {
     }
 
     @Test
-    public void doesHaveManeTest() {
-        Assert.assertTrue(lion.doesHaveMane());
-    }
-
-    @Test
     public void getFoodTest() throws Exception {
         lion.getFood();
         Mockito.verify(feline).getFood("Хищник");
     }
 
     @Test(expected = Exception.class)
-    public void ExceptionTest() throws Exception {
+    public void exceptionTest() throws Exception {
         Lion lion = new Lion("Не самец и не самка", feline);
         Assert.assertThrows(Exception.class, lion::doesHaveMane);
     }
