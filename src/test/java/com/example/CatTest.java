@@ -2,8 +2,9 @@ package com.example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.junit.Before;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 
@@ -12,10 +13,15 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
 
-    private final Feline feline = new Feline();
+    Cat cat;
 
-    @Spy
-    private Cat cat = new Cat(feline);
+    @Mock
+    Feline feline;
+
+    @Before
+    public void setUp() {
+        cat = new Cat(feline);
+    }
 
     @Test
     public void getSoundTest() {
@@ -24,12 +30,7 @@ public class CatTest {
 
     @Test
     public void getFoodTest() throws Exception {
-        Mockito.when(cat.getFood()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
     }
 }
-
-/*исправила метод getSoundTest().
-* если всё правильно понимаю, getFoodTest() править не надо,
-* ведь он зависит от predator.eatMeat()
-*/

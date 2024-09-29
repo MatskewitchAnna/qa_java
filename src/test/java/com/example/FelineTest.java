@@ -7,6 +7,8 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -14,6 +16,11 @@ public class FelineTest {
 
     @Spy
     private Feline feline = new Feline();
+
+    @Test
+    public void eatMeatTest() throws Exception {
+        assertEquals(feline.eatMeat(), List.of("Животные", "Птицы", "Рыба"));
+    }
 
     @Test
     public void getFamilyTest() {
